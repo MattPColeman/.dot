@@ -1,3 +1,4 @@
+alias python=python3
 alias dot="/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME"
 alias ls="ls --color=auto -F"
 alias l="ls --color=auto -F"
@@ -23,3 +24,5 @@ alias gpl="git pull"
 alias gps="git push"
 alias gp="git pull"
 alias gf="git fetch"
+
+export PATH=$HOME/bin:$PATH
