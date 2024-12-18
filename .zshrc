@@ -25,4 +25,14 @@ alias gps="git push"
 alias gp="git pull"
 alias gf="git fetch"
 
+local CODE_EXTENSION_FILE=$HOME/Library/Application\ Support/Code/User/extensions.json
+
+persist-code-extensions() {
+  code --list-extensions --show-versions > $CODE_EXTENSION_FILE
+}
+
+load-code-extensions() {
+    echo "Todo..."
+}
+
 export PATH=$HOME/bin:$PATH
