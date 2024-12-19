@@ -24,15 +24,21 @@ alias gpl="git pull"
 alias gps="git push"
 alias gp="git pull"
 alias gf="git fetch"
+export PATH=$HOME/bin:$PATH
 
+# Up/down uses current prefix to search history
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+# Get vscode extensions into vcs
 local CODE_EXTENSION_FILE=$HOME/Library/Application\ Support/Code/User/extensions.json
-
 persist-code-extensions() {
   code --list-extensions --show-versions > $CODE_EXTENSION_FILE
 }
-
 load-code-extensions() {
     echo "Todo..."
 }
-
-export PATH=$HOME/bin:$PATH
