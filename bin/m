@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import click
+import subprocess
+
+
+@click.group()
+def cli(): ...
+
+
+@cli.command()
+@click.option("-s", "--source", type=click.Choice(["gh"]), default="gh", help="Clone from where?")
+@click.option("-p", "--project", type=str, help="Project containing the repo to be cloned.", required=True)
+@click.option("-r", "--repo", type=str, help="Name of the repo to be cloned.", required=True)
+def clone(source: str, project: str, repo: str):
+    com = {"gh": "github.com"}[source]
+    url = {"gh": f"git@github.com:{project}/{repo}.git"}[source]
+    tgt = f"~/dev/{com}/{project}/{repo}"
+    subprocess.run(["git", "clone", url, tgt])
+
+
+@cli.command()
+def dev():
+    ...
+
+
+if __name__ == "__main__":
+    cli()
